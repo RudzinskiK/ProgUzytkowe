@@ -39,7 +39,7 @@ Z = (1/(np.tan(X)))*(1/(np.tan(X))) + np.tan(Y) * X
 surf = ax.plot_surface(X, Y, Z, cmap=cm.coolwarm, linewidth=0, antialiased=False)
 
 fig.colorbar(surf, shrink=0.5, aspect=5)
-plt.title('TYTU£')
+plt.title('TYTUÂ£')
 legend = ax.legend(loc='upper center',shadow=True, fontsize='x-large')
 plt.xlabel('X')
 plt.ylabel('Y')
@@ -83,17 +83,17 @@ xlsx = pd.ExcelFile('dane.xlsx')
 df = pd.read_excel(xlsx)
 print(df)
 #
-# popularne = df.groupby(['Rok', 'P³eæ']).agg({'Liczba': ['sum'], 'Imiê': ['first']})
+# popularne = df.groupby(['Rok', 'PÂ³eÃ¦']).agg({'Liczba': ['sum'], 'ImiÃª': ['first']})
 # print(popularne)
 
-Dane=pd.DataFrame(df,columns=['Rok','Imiê','Liczba','P³eæ'])
-imiona = Dane.groupby(['Rok', 'P³eæ']).agg({'Imiê': ['first'],'Liczba': ['max']})
+Dane=pd.DataFrame(df,columns=['Rok','ImiÃª','Liczba','PÂ³eÃ¦'])
+imiona = Dane.groupby(['Rok', 'PÂ³eÃ¦']).agg({'ImiÃª': ['first'],'Liczba': ['max']}).set_index("ImiÄ™")
 
 
 imiona.plot.bar()
 plt.title("Zadanie 4.1.1")
 plt.xlabel("Imiona")
-plt.ylabel("Liczebnoœæ")
-plt.legend(["Imiê","Rok"])
+plt.ylabel("LiczebnoÅ“Ã¦")
+plt.legend(["ImiÃª","Rok"])
 
 plt.show()
