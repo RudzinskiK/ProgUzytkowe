@@ -1,0 +1,99 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+x =np.linspace(-10,10)
+y =[]
+for liczba in x:
+    y.append(np.cos(liczba)+2*np.sin(liczba))
+
+
+fig, ax = plt.subplots()
+plt.title('Wykres funkcji cos(x) +2*sin(x)')
+ax.plot(x,y,'b--',label='cos(x)+2*sin(x)')
+plt.xlabel('X')
+plt.ylabel('Y')
+legend = ax.legend(loc='upper center',shadow=True, fontsize='x-large')
+plt.xticks([-10,-5,0,5,10])
+
+legend.get_frame().set_facecolor('#55FF55')
+plt.show()
+
+
+
+#### Zad 1.2
+
+from mpl_toolkits.mplot3d import Axes3D
+import matplotlib.pyplot as plt
+import matplotlib.cm as cm
+import numpy as np
+
+fig = plt.figure()
+ax = fig.gca(projection="3d")
+X = np.arange(-10,10)
+Y = np.arange(-10,10)
+
+X, Y = np.meshgrid(X, Y)
+
+Z = (1/(np.tan(X)))*(1/(np.tan(X))) + np.tan(Y) * X
+
+surf = ax.plot_surface(X, Y, Z, cmap=cm.coolwarm, linewidth=0, antialiased=False)
+
+fig.colorbar(surf, shrink=0.5, aspect=5)
+plt.title('TYTU£')
+legend = ax.legend(loc='upper center',shadow=True, fontsize='x-large')
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.xticks([-10,-5,0,5,10])
+plt.yticks([-10,-5,0,5,10])
+plt.show()
+
+
+
+#### Zad 2
+
+import numpy as np
+
+m=np.arange(5,30).reshape(5,5)
+print(m)
+m=m*5
+print(m)
+a=m[1:3]
+print(a)
+
+c = m.min(axis=0)
+print(c)
+
+d = m.reshape((25,1))
+print(d,'\n')
+e = m.reshape((1,25))
+print(e,'\n')
+
+
+#### Zad 3
+
+import pandas as pd
+import numpy as np
+import xlrd
+import openpyxl
+import matplotlib.pyplot as plt
+
+# DataFrame
+# tworzenie dataframe na
+xlsx = pd.ExcelFile('dane.xlsx')
+df = pd.read_excel(xlsx)
+print(df)
+#
+# popularne = df.groupby(['Rok', 'P³eæ']).agg({'Liczba': ['sum'], 'Imiê': ['first']})
+# print(popularne)
+
+Dane=pd.DataFrame(df,columns=['Rok','Imiê','Liczba','P³eæ'])
+imiona = Dane.groupby(['Rok', 'P³eæ']).agg({'Imiê': ['first'],'Liczba': ['max']})
+
+
+imiona.plot.bar()
+plt.title("Zadanie 4.1.1")
+plt.xlabel("Imiona")
+plt.ylabel("Liczebnoœæ")
+plt.legend(["Imiê","Rok"])
+
+plt.show()
