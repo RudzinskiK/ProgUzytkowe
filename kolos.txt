@@ -90,6 +90,16 @@ Dane=pd.DataFrame(df,columns=['Rok','Imiê','Liczba','P³eæ'])
 imiona = Dane.groupby(['Rok', 'P³eæ']).agg({'Imiê': ['first'],'Liczba': ['max']}).set_index("Imię")
 
 
+##### 3 pierwsze imiona 
+#Dane=pd.DataFrame(df,columns=['Rok','Imię','Liczba','Płeć'])
+#imiona = Dane.groupby(['Rok', 'Płeć']).head(3)
+#print(imiona)
+#imiona = imiona.groupby(['Rok', 'Płeć']).agg({'Liczba':['sum']})
+#print(imiona)
+
+
+
+
 imiona.plot.bar()
 plt.title("Zadanie 4.1.1")
 plt.xlabel("Imiona")
